@@ -1,8 +1,18 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import {NestFactory} from '@nestjs/core';
+import {AppModule} from './app.module';
+import Ssr = require('@react-ssr/nestjs-express/register');
+import {NestExpressApplication} from '@nestjs/platform-express';
+import {join} from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+    const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
+    await Ssr(app);
+
+    app.useStaticAssets(join(__dirname, '..', 'public'));
+
+    await app.listen(3000);
 }
-bootstrap();
+
+// tslint:disable-next-line:no-console
+bootstrap().then(e => console.log('http://localhost:3000'));

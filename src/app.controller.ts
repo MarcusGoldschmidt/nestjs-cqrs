@@ -1,12 +1,19 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import {Controller, Get, Render} from '@nestjs/common';
+
+export interface GetHelloView {
+    nome: string;
+    count: number;
+}
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
+    @Get()
+    @Render('index')
+    getHello(): GetHelloView {
+        return {
+            nome: 'Marcus Goldschmidt Oliveira',
+            count: 0,
+        };
+    }
 }
