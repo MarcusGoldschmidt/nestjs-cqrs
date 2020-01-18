@@ -11,6 +11,7 @@ export class AppController {
     @Get()
     @Render('index')
     getHello(): GetHelloView {
+
         return {
             nome: 'Marcus Goldschmidt Oliveira',
             count: 0,

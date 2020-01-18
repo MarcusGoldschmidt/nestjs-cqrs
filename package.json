@@ -22,6 +22,7 @@
     "typeorm:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -n",
     "typeorm:drop": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm schema:drop",
     "typeorm:run": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run",
+    "typeorm:create": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:create -n",
     "scss": "node-sass resources/scss -o public/css",
     "scss:build": "node-sass resources/scss -o public/css --output-style compressed",
     "scss:watch": "node-sass -w ./resources/scss -o ./public/css"
@@ -36,6 +37,7 @@
     "@react-ssr/nestjs-express": "^0.19.9",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "class-transformer": "^0.2.3",
     "class-validator": "^0.11.0",
     "cross-env": "^6.0.3",
     "mysql": "^2.17.1",

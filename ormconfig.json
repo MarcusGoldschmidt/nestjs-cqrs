@@ -11,7 +11,7 @@
     "dist/**/*.entity{.ts,.js}"
   ],
   "migrations": [
-    "dist/src/migration/**/*{.ts,.js}"
+    "dist/src/migrations/**/*{.ts,.js}"
   ],
   "cli": {
     "entitiesDir": "src/**/*.entity{.ts,.js}",
