@@ -5,6 +5,7 @@ import {UserRepository} from "./user.repository";
 import {CqrsModule} from "@nestjs/cqrs";
 import {UserEntity} from "./user.entity";
 import {TypeOrmModule} from "@nestjs/typeorm";
+import {ApplicationLoggerModule} from "../logger/logger.module";
 
 export const CommandHandlers = [UpdateScoreHandler];
 export const EventHandlers = [];
@@ -13,6 +14,7 @@ export const EventHandlers = [];
     imports: [
         TypeOrmModule.forFeature([UserEntity]),
         CqrsModule,
+        ApplicationLoggerModule
     ],
     controllers: [UserController],
     providers: [

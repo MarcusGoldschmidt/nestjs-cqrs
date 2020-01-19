@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 export default {
-    database: {
-        host: 'localhost',
-        port: 3306,
-        username: 'root',
-        password: 'root',
-        database: 'test',
+    app: {
+        name: process.env.APP_NAME,
+        env: process.env.APP_ENV,
+        key: process.env.APP_KEY,
+        debug: process.env.APP_DEBUG,
+        appUrl: process.env.APP_URL,
     },
 };
