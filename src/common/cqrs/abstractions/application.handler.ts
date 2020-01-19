@@ -1,8 +1,8 @@
 import {EventPublisher, ICommandHandler} from '@nestjs/cqrs';
-import {IApplicationCommand} from "../abstractions/interfaces";
-import {ApplicationAggregate} from "../abstractions/aggregate.abstraction";
-import {ApplicationRepository} from "../database/application.repository";
-import {ApplicationEntity} from "../abstractions/entity.abstraction";
+import {IApplicationCommand} from "./interfaces";
+import {ApplicationAggregate} from "./aggregate.abstraction";
+import {ApplicationRepository} from "./application.repository";
+import {ApplicationEntity} from "./entity.abstraction";
 
 export enum OperationHandler {
     UPDATE,

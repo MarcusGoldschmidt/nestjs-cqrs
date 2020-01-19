@@ -1,6 +1,6 @@
 import {Repository} from "typeorm";
-import {ApplicationAggregate} from "../abstractions/aggregate.abstraction";
-import {ApplicationEntity} from "../abstractions/entity.abstraction";
+import {ApplicationAggregate} from "./aggregate.abstraction";
+import {ApplicationEntity} from "./entity.abstraction";
 
 export abstract class ApplicationRepository<T extends ApplicationAggregate<ApplicationEntity>> {
     protected constructor(

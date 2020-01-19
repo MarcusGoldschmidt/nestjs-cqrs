@@ -1,4 +1,4 @@
-import {ApplicationRepository} from "../common/cqrs/database/application.repository";
+import {ApplicationRepository} from "../common/cqrs/abstractions/application.repository";
 import {UserAggregate} from "./user.aggregate";
 import {Injectable} from "@nestjs/common";
 import {Repository} from "typeorm";

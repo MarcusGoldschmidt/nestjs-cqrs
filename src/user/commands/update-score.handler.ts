@@ -1,4 +1,4 @@
-import {ApplicationHandler, OperationHandler} from "../../common/cqrs/commands/application.handler";
+import {ApplicationHandler, OperationHandler} from "../../common/cqrs/abstractions/application.handler";
 import UpdateScoreCommand from "./update-score.command";
 import {UserAggregate} from "../user.aggregate";
 import {CommandHandler, EventPublisher} from "@nestjs/cqrs";
