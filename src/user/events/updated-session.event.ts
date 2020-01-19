@@ -1,5 +1,5 @@
-import {ApplicationEvent} from "../../common/cqrs/interfaces";
-import {HasChanged} from "../../common/cqrs/has-changed";
+import {ApplicationEvent} from '../../common/cqrs/application.event';
+import {HasChanged} from '../../common/cqrs/has-changed';
 
 export class UpdatedSessionEvent extends ApplicationEvent {
 

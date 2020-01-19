@@ -1,8 +1,7 @@
-import {IApplicationCommand} from "../../common/cqrs/interfaces";
-import {IsIP, IsNumberString} from "class-validator";
+import {ApplicationCommand} from '../../common/cqrs/application.command';
+import {IsIP, IsNumberString} from 'class-validator';
 
-export default class UpdateSessionCommand extends IApplicationCommand {
-
+export default class UpdateSessionCommand extends ApplicationCommand {
 
     constructor(id: number | string, newSessionId: string, newRememberIp: string) {
         super(id);
@@ -14,5 +13,5 @@ export default class UpdateSessionCommand extends IApplicationCommand {
     newSessionId: string;
 
     @IsIP()
-    newRememberIp: string
+    newRememberIp: string;
 }

@@ -1,4 +1,4 @@
-import {BeforeInsert, BeforeUpdate, Column, PrimaryGeneratedColumn} from "typeorm";
+import {BeforeInsert, BeforeUpdate, Column, PrimaryGeneratedColumn} from 'typeorm';
 
 export abstract class ApplicationEntity {
     @PrimaryGeneratedColumn('uuid')

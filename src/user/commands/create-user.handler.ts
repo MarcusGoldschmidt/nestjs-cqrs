@@ -1,11 +1,11 @@
-import {CommandHandler, EventPublisher} from "@nestjs/cqrs";
-import UpdateScoreCommand from "./update-score.command";
-import {ApplicationHandler, OperationHandler} from "../../common/cqrs/application.handler";
-import {UserAggregate} from "../user.aggregate";
-import {UserRepository} from "../user.repository";
-import CreateUserCommand from "./create-user.command";
-import {CreatedUserEvent} from "../events/created-user.event";
-import {ErrorsHandler} from "../../common/cqrs/error";
+import {CommandHandler, EventPublisher} from '@nestjs/cqrs';
+import UpdateScoreCommand from './update-score.command';
+import {ApplicationHandler, OperationHandler} from '../../common/cqrs/application.handler';
+import {UserAggregate} from '../user.aggregate';
+import {UserRepository} from '../user.repository';
+import CreateUserCommand from './create-user.command';
+import {CreatedUserEvent} from '../events/created-user.event';
+import {ErrorsHandler} from '../../common/cqrs/error';
 
 @CommandHandler(UpdateScoreCommand)
 export class CreateUserHandler extends ApplicationHandler<UserAggregate, CreateUserCommand> {
@@ -23,11 +23,11 @@ export class CreateUserHandler extends ApplicationHandler<UserAggregate, CreateU
         // End Logic
 
         aggregate.publish(new CreatedUserEvent(
-            <string>aggregate.getId(),
+            aggregate.getId() as string,
             aggregate.getEntity().name,
             aggregate.getEntity().email,
             new Date(),
-            aggregate.getEntity().rememberIp
+            aggregate.getEntity().rememberIp,
         ));
 
         return OperationHandler.INSERT;

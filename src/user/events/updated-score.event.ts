@@ -1,4 +1,4 @@
-import {ApplicationEvent} from "../../common/cqrs/interfaces";
+import {ApplicationEvent} from '../../common/cqrs/application.event';
 
 export class UpdatedScoreEvent extends ApplicationEvent {
 

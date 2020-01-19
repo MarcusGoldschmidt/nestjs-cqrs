@@ -1,29 +1,28 @@
 import {EventPublisher, ICommandHandler} from '@nestjs/cqrs';
-import {IApplicationCommand} from "./interfaces";
-import {ApplicationAggregate} from "./aggregate.abstraction";
-import {ApplicationRepository} from "./application.repository";
-import {ApplicationEntity} from "./entity.abstraction";
-import {NotFoundException} from "@nestjs/common";
-import Errors, {ErrorsHandler} from "./error";
-import {ApplicationErrorsException} from "../exceptions/application-errors.exception";
+import {ApplicationCommand} from './application.command';
+import {ApplicationAggregate} from './aggregate.abstraction';
+import {ApplicationRepository} from './application.repository';
+import {ApplicationEntity} from './entity.abstraction';
+import Errors, {ErrorsHandler} from './error';
+import {ApplicationErrorsException} from '../exceptions/application-errors.exception';
 
 export enum OperationHandler {
     UPDATE,
     INSERT,
     DELETE,
-    SKIP
+    SKIP,
 }
 
 // T is the aggregate
 // V que command
 export abstract class ApplicationHandler<T extends ApplicationAggregate<ApplicationEntity>,
-    V extends IApplicationCommand>
+    V extends ApplicationCommand>
     implements ICommandHandler<V> {
 
     protected constructor(
         private readonly repository: ApplicationRepository<T>,
         protected readonly publisher: EventPublisher,
-        private readonly operationIntent: OperationHandler,) {
+        private readonly operationIntent: OperationHandler) {
     }
 
     async execute(command: V) {
@@ -32,7 +31,7 @@ export abstract class ApplicationHandler<T extends ApplicationAggregate<Applicat
         const aggregateNoEvent = await this.repository.findById(command.id);
         const aggregate = this.publisher.mergeObjectContext(aggregateNoEvent);
 
-        if (this.operationIntent !== OperationHandler.INSERT && aggregate.getEntity() == undefined) {
+        if (this.operationIntent !== OperationHandler.INSERT && aggregate.getEntity() === undefined) {
             errorsHandler.add(Errors.generic.notFound);
             throw new ApplicationErrorsException(errorsHandler.getAll());
         }
@@ -49,7 +48,7 @@ export abstract class ApplicationHandler<T extends ApplicationAggregate<Applicat
         }
 
         // Persist in database
-        if (this.operationIntent == OperationHandler.DELETE) {
+        if (this.operationIntent === OperationHandler.DELETE) {
             await this.repository.remove(aggregate.getEntity());
         } else {
             await this.repository.commit(aggregate.getEntity());

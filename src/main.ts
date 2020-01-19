@@ -4,7 +4,7 @@ import Ssr = require('@react-ssr/nestjs-express/register');
 import {NestExpressApplication} from '@nestjs/platform-express';
 import {join} from 'path';
 import {ValidationPipe} from '@nestjs/common';
-import {ApplicationLoggerService} from "./logger/logger.service";
+import {ApplicationLoggerService} from './logger/logger.service';
 
 async function bootstrap() {
     const app = await NestFactory.create<NestExpressApplication>(AppModule);

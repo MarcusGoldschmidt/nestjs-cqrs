@@ -1,8 +1,8 @@
-import {ApplicationAggregate} from "../common/cqrs/aggregate.abstraction";
-import {UserEntity} from "./user.entity";
-import {UpdatedScoreEvent} from "./events/updated-score.event";
-import {HasChanged} from "../common/cqrs/has-changed";
-import {UpdatedSessionEvent} from "./events/updated-session.event";
+import {ApplicationAggregate} from '../common/cqrs/aggregate.abstraction';
+import {UserEntity} from './user.entity';
+import {UpdatedScoreEvent} from './events/updated-score.event';
+import {HasChanged} from '../common/cqrs/has-changed';
+import {UpdatedSessionEvent} from './events/updated-session.event';
 
 export class UserAggregate extends ApplicationAggregate<UserEntity> {
 
@@ -11,16 +11,16 @@ export class UserAggregate extends ApplicationAggregate<UserEntity> {
     }
 
     updateScore(add: number) {
-        let oldScore = this.entity.score;
+        const oldScore = this.entity.score;
 
         this.entity.score += add;
 
         // Emit event
-        this.apply(new UpdatedScoreEvent(<string>this.getId(), oldScore, add));
+        this.apply(new UpdatedScoreEvent( this.getId() as string, oldScore, add));
     }
 
     changeIpAndSession(userId: string, newIp: string, newSessionId: string): void {
-        if (this.getId() == userId) {
+        if (this.getId() === userId) {
 
         }
 
@@ -31,7 +31,7 @@ export class UserAggregate extends ApplicationAggregate<UserEntity> {
         this.entity.rememberToken = newSessionId;
 
         // Emit event
-        this.apply(new UpdatedSessionEvent(<string>this.getId(), auditIp, auditSession));
+        this.apply(new UpdatedSessionEvent( this.getId() as string, auditIp, auditSession));
     }
 
 }

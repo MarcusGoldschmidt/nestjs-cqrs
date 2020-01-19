@@ -1,9 +1,9 @@
-import {Injectable} from "@nestjs/common";
-import {UserEntity} from "../user/user.entity";
-import {UserService} from "../user/user.service";
+import {Injectable} from '@nestjs/common';
+import {UserEntity} from '../user/user.entity';
+import {UserService} from '../user/user.service';
 import * as Crypt from 'bcrypt';
-import {ApplicationLoggerService} from "../logger/logger.service";
-import {AuthException} from "../common/exceptions/auth.exception";
+import {ApplicationLoggerService} from '../logger/logger.service';
+import {AuthException} from '../common/exceptions/auth.exception';
 
 @Injectable()
 export class AuthService {

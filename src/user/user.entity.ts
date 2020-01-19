@@ -1,6 +1,6 @@
-import {ApplicationEntity} from "../common/cqrs/entity.abstraction";
-import {BeforeInsert, Column, Entity, Index} from "typeorm";
-import {Permission} from "./enuns/permission.enum";
+import {ApplicationEntity} from '../common/cqrs/entity.abstraction';
+import {BeforeInsert, Column, Entity, Index} from 'typeorm';
+import {Permission} from './enuns/permission.enum';
 
 @Entity('User')
 export class UserEntity extends ApplicationEntity {

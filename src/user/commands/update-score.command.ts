@@ -1,9 +1,9 @@
-import {IApplicationCommand} from "../../common/cqrs/interfaces";
-import {IsNumber, Min} from "class-validator";
+import {ApplicationCommand} from '../../common/cqrs/application.command';
+import {IsNumber, Min} from 'class-validator';
 import 'reflect-metadata';
-import {Type} from "class-transformer";
+import {Type} from 'class-transformer';
 
-export default class UpdateScoreCommand extends IApplicationCommand {
+export default class UpdateScoreCommand extends ApplicationCommand {
 
     @Type(() => Number)
     @IsNumber()

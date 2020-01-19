@@ -1,7 +1,7 @@
-import {IApplicationCommand} from "../../common/cqrs/interfaces";
+import {ApplicationCommand} from '../../common/cqrs/application.command';
 import 'reflect-metadata';
 
-export default class CreateUserCommand extends IApplicationCommand {
+export default class CreateUserCommand extends ApplicationCommand {
 
     name: string;
 

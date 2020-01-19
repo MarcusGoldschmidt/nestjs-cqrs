@@ -1,16 +1,16 @@
-import {ApplicationRepository} from "../common/cqrs/application.repository";
-import {UserAggregate} from "./user.aggregate";
-import {Injectable} from "@nestjs/common";
-import {Repository} from "typeorm";
-import {UserEntity} from "./user.entity";
-import {InjectRepository} from "@nestjs/typeorm";
+import {ApplicationRepository} from '../common/cqrs/application.repository';
+import {UserAggregate} from './user.aggregate';
+import {Injectable} from '@nestjs/common';
+import {Repository} from 'typeorm';
+import {UserEntity} from './user.entity';
+import {InjectRepository} from '@nestjs/typeorm';
 
 @Injectable()
 export class UserRepository extends ApplicationRepository<UserAggregate> {
 
     constructor(
         @InjectRepository(UserEntity)
-        protected readonly repository: Repository<UserEntity>
+        protected readonly repository: Repository<UserEntity>,
     ) {
         super(repository);
     }

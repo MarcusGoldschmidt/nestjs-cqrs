@@ -1,6 +1,6 @@
 import {Body, Controller, Post, Render} from '@nestjs/common';
-import UpdateScoreCommand from "./commands/update-score.command";
-import {CommandBus} from "@nestjs/cqrs";
+import UpdateScoreCommand from './commands/update-score.command';
+import {CommandBus} from '@nestjs/cqrs';
 
 @Controller('user')
 export class UserController {

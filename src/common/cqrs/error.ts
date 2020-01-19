@@ -1,6 +1,6 @@
 export interface ApplicationError {
-    code: string,
-    message: string,
+    code: string;
+    message: string;
 }
 
 const Errors = {
@@ -10,8 +10,8 @@ const Errors = {
         notFound: {
             code: 'generic.not.found',
             message: 'Não foi possível acessar o recurso',
-        }
-    }
+        },
+    },
 };
 
 export default Errors;
