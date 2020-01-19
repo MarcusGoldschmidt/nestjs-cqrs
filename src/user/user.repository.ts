@@ -1,6 +1,6 @@
 import {ApplicationRepository} from '../common/cqrs/application.repository';
 import {UserAggregate} from './user.aggregate';
-import {Injectable} from '@nestjs/common';
+import {Injectable, NotFoundException} from '@nestjs/common';
 import {Repository} from 'typeorm';
 import {UserEntity} from './user.entity';
 import {InjectRepository} from '@nestjs/typeorm';
@@ -16,7 +16,13 @@ export class UserRepository extends ApplicationRepository<UserAggregate> {
     }
 
     async findById(id: string | number): Promise<UserAggregate> {
-        return new UserAggregate(await this.repository.findOne({where: {id}}));
+
+        let entity = await this.repository.findOne({where: {id}});
+        if (entity == undefined) {
+            throw new NotFoundException();
+        }
+
+        return new UserAggregate(entity);
     }
 
     async findByEmail(email: string): Promise<UserEntity | undefined> {

@@ -3,11 +3,13 @@ import 'reflect-metadata';
 
 export default class CreateUserCommand extends ApplicationCommand {
 
-    name: string;
-
-    email: string;
-
-    password: string;
-
-    confirmPassword: string;
+    constructor(
+        id: number,
+        public readonly name: string,
+        public readonly email: string,
+        public readonly password: string,
+        public readonly confirmPassword: string,
+    ) {
+        super(id);
+    }
 }

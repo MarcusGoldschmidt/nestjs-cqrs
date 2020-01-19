@@ -5,8 +5,16 @@ import {Type} from 'class-transformer';
 
 export default class UpdateScoreCommand extends ApplicationCommand {
 
+    constructor(
+        id: number,
+        addScore: number,
+    ) {
+        super(id);
+        this.addScore = addScore;
+    }
+
     @Type(() => Number)
     @IsNumber()
     @Min(0)
-    addScore: number;
+    public readonly addScore: number;
 }

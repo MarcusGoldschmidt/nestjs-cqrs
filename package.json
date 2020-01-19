@@ -28,6 +28,8 @@
     "scss:watch": "node-sass -w ./resources/scss -o ./public/css"
   },
   "dependencies": {
+    "@material-ui/core": "^4.8.3",
+    "@material-ui/icons": "^4.5.1",
     "@nestjs/common": "^6.7.2",
     "@nestjs/core": "^6.7.2",
     "@nestjs/cqrs": "^6.1.0",
