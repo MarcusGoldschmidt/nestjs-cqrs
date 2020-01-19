@@ -11,7 +11,7 @@ export abstract class ApplicationAggregate<T extends ApplicationEntity> extends 
         return this.entity.id;
     }
 
-    getEntity(): Readonly<ApplicationEntity> {
+    getEntity(): Readonly<T> {
         return this.entity;
     }
 }

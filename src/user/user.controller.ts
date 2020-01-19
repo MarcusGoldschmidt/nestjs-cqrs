@@ -5,7 +5,8 @@ import {CommandBus} from "@nestjs/cqrs";
 @Controller('user')
 export class UserController {
 
-    constructor(private readonly commandBus: CommandBus) {}
+    constructor(
+        private readonly commandBus: CommandBus) {}
 
     @Post()
     @Render('index')

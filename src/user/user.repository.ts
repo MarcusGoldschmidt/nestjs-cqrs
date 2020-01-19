@@ -19,4 +19,11 @@ export class UserRepository extends ApplicationRepository<UserAggregate> {
         return new UserAggregate(await this.repository.findOne({where: {id}}));
     }
 
+    async findByEmail(email: string): Promise<UserEntity | undefined> {
+        return await this.repository
+            .createQueryBuilder()
+            .where('email = :email', {email})
+            .getOne();
+    }
+
 }

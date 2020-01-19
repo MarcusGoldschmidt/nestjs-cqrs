@@ -14,7 +14,7 @@ export const EventHandlers = [];
     imports: [
         TypeOrmModule.forFeature([UserEntity]),
         CqrsModule,
-        ApplicationLoggerModule
+        ApplicationLoggerModule,
     ],
     controllers: [UserController],
     providers: [
