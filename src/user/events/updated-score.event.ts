@@ -1,9 +1,9 @@
-import {ApplicationEvent} from "../../common/cqrs/abstractions/interfaces";
+import {ApplicationEvent} from "../../common/cqrs/interfaces";
 
-export class UpdateScoreEvent extends ApplicationEvent {
+export class UpdatedScoreEvent extends ApplicationEvent {
 
     constructor(
-        id: number,
+        id: string,
         private readonly oldScore: number,
         private readonly addScore: number) {
         super(id);

@@ -1,14 +1,14 @@
-import {ApplicationHandler, OperationHandler} from "../../common/cqrs/abstractions/application.handler";
-import UpdateScoreCommand from "./update-score.command";
-import {UserAggregate} from "../user.aggregate";
 import {CommandHandler, EventPublisher} from "@nestjs/cqrs";
+import UpdateScoreCommand from "./update-score.command";
+import {ApplicationHandler, OperationHandler} from "../../common/cqrs/application.handler";
+import {UserAggregate} from "../user.aggregate";
 import {UserRepository} from "../user.repository";
 
 @CommandHandler(UpdateScoreCommand)
 export class UpdateScoreHandler extends ApplicationHandler<UserAggregate, UpdateScoreCommand> {
 
     constructor(repository: UserRepository, publisher: EventPublisher) {
-        super(repository, publisher);
+        super(repository, publisher, OperationHandler.UPDATE);
     }
 
     async applicationExecute(aggregate: UserAggregate, command: UpdateScoreCommand): Promise<OperationHandler> {

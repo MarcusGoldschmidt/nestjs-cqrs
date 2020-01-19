@@ -1,7 +1,12 @@
-import {IApplicationCommand} from "../../common/cqrs/abstractions/interfaces";
-import {IsNumberString} from "class-validator";
+import {IApplicationCommand} from "../../common/cqrs/interfaces";
+import {IsNumber, Min} from "class-validator";
+import 'reflect-metadata';
+import {Type} from "class-transformer";
 
 export default class UpdateScoreCommand extends IApplicationCommand {
-    @IsNumberString()
+
+    @Type(() => Number)
+    @IsNumber()
+    @Min(0)
     addScore: number;
 }

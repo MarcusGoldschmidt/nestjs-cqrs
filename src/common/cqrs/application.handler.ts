@@ -3,6 +3,7 @@ import {IApplicationCommand} from "./interfaces";
 import {ApplicationAggregate} from "./aggregate.abstraction";
 import {ApplicationRepository} from "./application.repository";
 import {ApplicationEntity} from "./entity.abstraction";
+import {NotFoundException} from "@nestjs/common";
 
 export enum OperationHandler {
     UPDATE,
@@ -19,7 +20,8 @@ export abstract class ApplicationHandler<T extends ApplicationAggregate<Applicat
 
     protected constructor(
         private readonly repository: ApplicationRepository<T>,
-        private readonly publisher: EventPublisher) {
+        private readonly publisher: EventPublisher,
+        protected readonly operationIntent: OperationHandler,) {
     }
 
     async execute(command: V) {
@@ -27,15 +29,19 @@ export abstract class ApplicationHandler<T extends ApplicationAggregate<Applicat
         const aggregateNoEvent = await this.repository.findById(command.id);
         const aggregate = this.publisher.mergeObjectContext(aggregateNoEvent);
 
-        // @ts-ignore
-        const operator = await this.applicationExecute(aggregate, command);
+        if (this.operationIntent !== OperationHandler.INSERT && aggregate.getEntity() == undefined) {
+            throw new NotFoundException()
+        }
 
-        if (operator === OperationHandler.SKIP){
-            return ;
+        // @ts-ignore
+        this.operationIntent = await this.applicationExecute(aggregate, command) || this.operationIntent;
+
+        if (this.operationIntent === OperationHandler.SKIP) {
+            return;
         }
 
         // Persist in database
-        if (operator == OperationHandler.DELETE) {
+        if (this.operationIntent == OperationHandler.DELETE) {
             await this.repository.remove(aggregate.getEntity());
         } else {
             await this.repository.commit(aggregate.getEntity());
@@ -47,5 +53,5 @@ export abstract class ApplicationHandler<T extends ApplicationAggregate<Applicat
 
     // All application logic here
     // Domain logic in aggregate
-    abstract async applicationExecute(aggregate: T, command: V): Promise<OperationHandler>;
+    abstract async applicationExecute(aggregate: T, command: V): Promise<OperationHandler | void>;
 }
