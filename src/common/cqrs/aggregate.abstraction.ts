@@ -7,7 +7,7 @@ export abstract class ApplicationAggregate<T extends ApplicationEntity> extends 
         super();
     }
 
-    getId(): number {
+    getId(): number | string {
         return this.entity.id;
     }
 
