@@ -1,6 +1,6 @@
 import {NestFactory} from '@nestjs/core';
 import {AppModule} from './app.module';
-const ssr = require('@react-ssr/nestjs-express/register');
+import ssr from '@react-ssr/nestjs-express/register';
 import {NestExpressApplication} from '@nestjs/platform-express';
 import {join} from 'path';
 import {ValidationPipe} from '@nestjs/common';

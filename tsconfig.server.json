@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
@@ -11,9 +12,15 @@
     "baseUrl": "./",
     "incremental": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "views/**/*.tsx",
+    "src/migrations/**/*.ts"
   ]
 }

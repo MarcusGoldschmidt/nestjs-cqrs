@@ -48,11 +48,11 @@ export default function SignInSide() {
     const classes: any = useStyles({
         palette: {
             type: 'dark',
-        }
+        },
     });
 
     return (
-        <Grid container component="main" className={classes.root}>
+        <Grid container component='main' className={classes.root}>
             <CssBaseline/>
             <Grid item xs={false} sm={4} md={7} className={classes.image}/>
             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -60,54 +60,54 @@ export default function SignInSide() {
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon/>
                     </Avatar>
-                    <Typography component="h1" variant="h5">
+                    <Typography component='h1' variant='h5'>
                         Login
                     </Typography>
                     <form className={classes.form} noValidate>
                         <TextField
-                            variant="outlined"
-                            margin="normal"
+                            variant='outlined'
+                            margin='normal'
                             required
                             fullWidth
-                            id="email"
-                            label="Email"
-                            name="email"
-                            autoComplete="email"
+                            id='email'
+                            label='Email'
+                            name='email'
+                            autoComplete='email'
                             autoFocus
                         />
                         <TextField
-                            variant="outlined"
-                            margin="normal"
+                            variant='outlined'
+                            margin='normal'
                             required
                             fullWidth
-                            name="password"
-                            label="Senha"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
+                            name='password'
+                            label='Senha'
+                            type='password'
+                            id='password'
+                            autoComplete='current-password'
                         />
                         <FormControlLabel
-                            control={<Checkbox value="remember" color="primary"/>}
-                            label="Lembrar-me"
+                            control={<Checkbox value='remember' color='primary'/>}
+                            label='Lembrar-me'
                         />
                         <Button
-                            type="submit"
+                            type='submit'
                             fullWidth
-                            variant="contained"
-                            color="primary"
+                            variant='contained'
+                            color='primary'
                             className={classes.submit}
                         >
                             Entrar
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
+                                <Link href='#' variant='body2'>
                                     Esqueceu a senha?
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
-                                    {"Registrar-se"}
+                                <Link href='#' variant='body2'>
+                                    {'Registrar-se'}
                                 </Link>
                             </Grid>
                         </Grid>

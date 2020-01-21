@@ -20,7 +20,7 @@ export class AuthService {
             this.logger.log(`${user.name} has right local passport`);
             return user;
         }
-        this.logger.log(`${user.name} do not have right local passport`);
+        this.logger.log(`${email} do not have right local passport`);
         return undefined;
     }
 

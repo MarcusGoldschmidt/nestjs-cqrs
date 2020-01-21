@@ -16,12 +16,13 @@ export class UserAggregate extends ApplicationAggregate<UserEntity> {
         this.entity.score += add;
 
         // Emit event
-        this.apply(new UpdatedScoreEvent( this.getId() as string, oldScore, add));
+        this.apply(new UpdatedScoreEvent(this.getId() as string, oldScore, add));
     }
 
     changeIpAndSession(userId: string, newIp: string, newSessionId: string): void {
         if (this.getId() === userId) {
-
+            // TODO: faz alguma coisa
+            return;
         }
 
         const auditIp = new HasChanged<string>(this.entity.rememberIp, newIp);
@@ -31,7 +32,7 @@ export class UserAggregate extends ApplicationAggregate<UserEntity> {
         this.entity.rememberToken = newSessionId;
 
         // Emit event
-        this.apply(new UpdatedSessionEvent( this.getId() as string, auditIp, auditSession));
+        this.apply(new UpdatedSessionEvent(this.getId() as string, auditIp, auditSession));
     }
 
 }

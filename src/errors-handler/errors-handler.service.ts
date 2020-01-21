@@ -1,9 +1,8 @@
 import {Injectable, Scope} from '@nestjs/common';
-import {ApplicationError} from "../common/cqrs/error";
-
+import {ApplicationError} from '../common/cqrs/error';
 
 @Injectable({
-    scope: Scope.REQUEST
+    scope: Scope.REQUEST,
 })
 export class ErrorsHandlerService {
     private readonly error: ApplicationError[] = [];

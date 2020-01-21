@@ -5,8 +5,8 @@ export class AuthController {
 
     @Get('login')
     @Render('auth/login')
-    getLoginPager(){
-
+    getLoginPager(): void {
+        return;
     }
 
 }

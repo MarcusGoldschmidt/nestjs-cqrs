@@ -17,8 +17,8 @@ export class UserRepository extends ApplicationRepository<UserAggregate> {
 
     async findById(id: string | number): Promise<UserAggregate> {
 
-        let entity = await this.repository.findOne({where: {id}});
-        if (entity == undefined) {
+        const entity = await this.repository.findOne({where: {id}});
+        if (entity === undefined) {
             throw new NotFoundException();
         }
 

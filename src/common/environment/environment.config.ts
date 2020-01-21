@@ -2,7 +2,7 @@ import config from '../../../environment.json';
 
 export enum EnvironmentConfig {
     dev = 'local',
-    prod = 'production'
+    prod = 'production',
 }
 
 export interface AppConfig {
@@ -12,7 +12,7 @@ export interface AppConfig {
         key: string,
         debug: boolean,
         appUrl: string,
-    }
+    };
 }
 
-export default <AppConfig> config;
+export default config as AppConfig;

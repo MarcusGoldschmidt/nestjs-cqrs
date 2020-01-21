@@ -16,10 +16,12 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
+    "strictPropertyInitialization": false
   },
   "exclude": [
     "node_modules",
     "dist",
-    "ssr.config.js"
+    "ssr.config.js",
+    "src/**/*.ts"
   ]
 }

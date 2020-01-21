@@ -15,7 +15,7 @@ export class UserService {
     ) {
     }
 
-    async findByEmail(email: string): Promise<UserEntity> {
+    async findByEmail(email: string): Promise<UserEntity | undefined> {
         return await this.userRepository
             .createQueryBuilder()
             .where('email = :email', {email})
