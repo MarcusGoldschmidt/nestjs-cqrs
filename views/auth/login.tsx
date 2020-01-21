@@ -11,14 +11,14 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
-import app from '../../src/common/environment/environment.config';
+import config from '../../src/common/environment/environment.config';
 
 const useStyles = makeStyles(theme => ({
     root: {
         height: '100vh',
     },
     image: {
-        backgroundImage: `url(http://localhost:3000/public/images/login-cat.jpg)`,
+        backgroundImage: `url(${config.app.appUrl}/public/images/login-cat.jpg)`,
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
