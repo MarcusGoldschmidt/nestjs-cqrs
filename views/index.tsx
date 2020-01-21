@@ -7,7 +7,7 @@ const Index = (props: GetHelloView) => {
 
     return (
         <React.Fragment>
-            <p>Hello {props.nome}!</p>
+            <p>Hello Sir {props.nome}!</p>
             <button onClick={() => setCount(count + 1)}>Click Me {count} times</button>
             <p>Message from state: {props.nome}</p>
         </React.Fragment>

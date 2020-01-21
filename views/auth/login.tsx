@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 export default function SignInSide() {
     const classes: any = useStyles({
         palette: {
-            type: 'dark'
+            type: 'dark',
         }
     });
 
