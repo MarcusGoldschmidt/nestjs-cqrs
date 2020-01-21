@@ -18,12 +18,12 @@ const useStyles = makeStyles(theme => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: `url(${config.app.appUrl}/public/images/login-cat.jpg)`,
+        backgroundImage: `url(${config.app.appUrl}/public/images/login-cat.png)`,
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'left',
     },
     paper: {
         margin: theme.spacing(8, 4),
