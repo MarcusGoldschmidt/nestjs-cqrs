@@ -1,4 +1,12 @@
-import { Controller } from '@nestjs/common';
+import {Controller, Get, Render} from '@nestjs/common';
 
 @Controller('auth')
-export class AuthController {}
+export class AuthController {
+
+    @Get('login')
+    @Render('auth/login')
+    getLoginPager(){
+
+    }
+
+}

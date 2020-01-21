@@ -1,4 +1,4 @@
-import {Controller, Get, Render} from '@nestjs/common';
+import {Controller, Get, Param, Render, Res} from '@nestjs/common';
 
 export interface GetHelloView {
     nome: string;
@@ -16,5 +16,10 @@ export class AppController {
             nome: 'Marcus Goldschmidt Oliveira',
             count: 0,
         };
+    }
+
+    @Get('public/images/:imagePath')
+    sendImage(@Param() param, @Res() res) {
+        return res.sendFile(param.imagePath, { root: 'public/images' });
     }
 }

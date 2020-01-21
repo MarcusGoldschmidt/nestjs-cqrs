@@ -6,6 +6,7 @@ import {CqrsModule} from '@nestjs/cqrs';
 import {UserEntity} from './user.entity';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {ApplicationLoggerModule} from '../logger/logger.module';
+import {UserService} from "./user.service";
 
 export const CommandHandlers = [UpdateScoreHandler];
 export const EventHandlers = [];
@@ -19,8 +20,12 @@ export const EventHandlers = [];
     controllers: [UserController],
     providers: [
         UserRepository,
+        UserService,
         ...CommandHandlers,
     ],
+    exports: [
+        UserService
+    ]
 })
 export class UserModule {
 }
