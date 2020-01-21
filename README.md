@@ -46,6 +46,8 @@ $ npm run test:cov
 - [x] docker-compose
 - [x] Basic cqrs
 - [x] Basic ssr
+- [ ] create basic architecture for simple crud 
+- [ ] create generic crud controller
 - [ ] create session auth 
 - [ ] create email module 
 - [ ] create jwt auth (for api integration)
